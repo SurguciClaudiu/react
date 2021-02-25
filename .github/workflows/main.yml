@@ -15,5 +15,5 @@ jobs:
           port: 22269
           script: |
             ls
-            sudo cp actions-runner/CECO/react/react/build /home/weinstall/github.weinstall.io
+            sudo cp actions-runner/CECO/react/react/build/* /home/weinstall/github.weinstall.io/
             
