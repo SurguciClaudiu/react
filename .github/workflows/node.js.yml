@@ -28,12 +28,13 @@ jobs:
     - run: npm i
     - run: npm run build 
     
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
+    - name: ls -a via ssh
+      uses: fifsky/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: whoami
-
+      command: |
+          cd /tmp
+          ls -a
+          host: ${{ secrets.SSH_HOST }}
+          user: weinstall
+          key: ${{ secrets.SSH_PASSWORD}}
+          port: ${{ secrets.SSH_PORT}}
