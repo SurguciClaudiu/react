@@ -1,46 +1,16 @@
-name: Node Github CI
-
-on:
-  push:
-    branches:
-      - master
-
+name: remote ssh command
+on: [push]
 jobs:
-  test:
 
+  build:
+    name: Build
     runs-on: self-hosted
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/github-script@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - name: npm install and test
-      run: |
-        npm install
-        npm test
-        npm run build  
-        
-        
-  deploy:
-    runs-on: self-hosted
-
-    steps:
-    - name: SSH and deploy node app
+    - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PASSWORD }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd ~/node-github-demo
-          git pull origin master
-          npm install --production
-          pm2 restart node-app
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: mkdir CECOOOO
