@@ -27,14 +27,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i
     - run: npm run build 
-    
-    - name: ls -a via ssh
-      uses: fifsky/ssh-action@master
-      with:
-          command: |
-              cd /tmp
-              ls -a
-          host: ${{ secrets.SSH_HOST }}
-          user: weinstall
-          key: ${{ secrets.SSH_PASSWORD}}
-          port: ${{ secrets.SSH_PORT}}
