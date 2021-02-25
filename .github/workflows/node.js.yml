@@ -31,9 +31,9 @@ jobs:
     - name: ls -a via ssh
       uses: fifsky/ssh-action@master
       with:
-      command: |
-          cd /tmp
-          ls -a
+          command: |
+              cd /tmp
+              ls -a
           host: ${{ secrets.SSH_HOST }}
           user: weinstall
           key: ${{ secrets.SSH_PASSWORD}}
