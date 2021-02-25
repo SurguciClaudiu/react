@@ -27,3 +27,18 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i
     - run: npm run build 
+    
+  ssh:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: weinstall.io
+          username: root
+          password: lmalbastrulung.1234
+          port: 22269
+          script: |
+            ls
+            cp -a actions-runner/CECO/react/react/build/* /home/weinstall/github.weinstall.io
