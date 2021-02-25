@@ -1,0 +1,19 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: weinstall.io
+          username: weinstall
+          password: westside.1234
+          port: 22269
+          script: |
+            ls
+            cp -a actions-runner/CECO/react/react/build /home/weinstall/github.weinstall.io
+            
