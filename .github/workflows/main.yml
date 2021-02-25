@@ -10,8 +10,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: weinstall.io
-          username: weinstall
-          password: westside.1234
+          username: root
+          password: lmalbastrulung.1234
           port: 22269
           script: |
             ls
