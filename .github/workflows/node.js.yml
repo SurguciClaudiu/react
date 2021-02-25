@@ -29,7 +29,8 @@ jobs:
     - run: npm run build 
     
   ssh:
-      name: Build
+      needs: [build]
+      name: SSH COPY 
       runs-on: ubuntu-latest
       steps:
       - name: executing remote ssh commands using password
